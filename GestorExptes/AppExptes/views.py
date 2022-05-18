@@ -1,3 +1,17 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import Context, Template
 
-# Create your views here.
+def saluda2(self):
+    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\padre.html')
+    plantilla = Template(miHtml.read())
+    miHtml.close()
+    miContexto = Context()
+    return HttpResponse(plantilla.render(miContexto))
+
+def saluda3(self):
+    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\inicio.html')
+    plantilla = Template(miHtml.read())
+    miHtml.close()
+    miContexto = Context()
+    return HttpResponse(plantilla.render(miContexto))
