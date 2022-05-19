@@ -7,14 +7,16 @@
     
     <p>Template del formulario de personal</p>
 
-    <form action="/AppExptes/personalFormularioPost/" method="POST"> {% csrf_token %}
+    <form action="/AppExptes/personalFormulario/" method="POST"> {% csrf_token %}
 
-        <p>Cuenta: <input type="text" name="cuenta" placeholder="Ingrese su cuenta"></p>
+        <!-- <p>Cuenta: <input type="text" name="cuenta" placeholder="Ingrese su cuenta"></p>
         <p>Sector: <input type="text" name="sector" placeholder="Ingrese su sector"></p>
         <p>Nombre: <input type="text" name="nombre" placeholder="Ingrese su nombre"></p>
         <p>Apellido: <input type="text" name="apellido" placeholder="Ingrese su apellido"></p>
         <p>DNI: <input type="number" name="dni" placeholder="Ingrese su DNI"></p>
-        <p>Email: <input type="text" name="email" placeholder="Ingrese su email"></p>
+        <p>Email: <input type="text" name="email" placeholder="Ingrese su email"></p> -->
+
+        {{miForm.as_p}}
 
         <input type="submit" value="Enviar">
 
