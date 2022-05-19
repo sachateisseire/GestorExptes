@@ -2,30 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, Template
 
-def inicio(self):
-    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\inicio.html')
-    plantilla = Template(miHtml.read())
-    miHtml.close()
-    miContexto = Context()
-    return HttpResponse(plantilla.render(miContexto))
+def inicio(request):
+    return render(request, 'AppExptes/inicio.html')
 
-def personal(self):
-    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\personal.html')
-    plantilla = Template(miHtml.read())
-    miHtml.close()
-    miContexto = Context()
-    return HttpResponse(plantilla.render(miContexto))
+def personal(request):
+    return render(request, 'AppExptes/personal.html')
 
-def expedientes(self):
-    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\expedientes.html')
-    plantilla = Template(miHtml.read())
-    miHtml.close()
-    miContexto = Context()
-    return HttpResponse(plantilla.render(miContexto))
+def expedientes(request):
+    return render(request, 'AppExptes/expedientes.html')
 
-def sector(self):
-    miHtml = open('C:\\Users\\Oficina\\Desktop\\GestorExptes\\GestorExptes\\AppExptes\\templates\\AppExptes\\sector.html')
-    plantilla = Template(miHtml.read())
-    miHtml.close()
-    miContexto = Context()
-    return HttpResponse(plantilla.render(miContexto))
+def sector(request):
+    return render(request, 'AppExptes/sector.html')
+
+def personalFormulario(request):
+    return render(request, 'AppExptes/personalFormulario.html')

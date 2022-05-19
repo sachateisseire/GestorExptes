@@ -1,0 +1,24 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <p>Template del formulario de personal</p>
+
+    <form action="/personalFormulario/" method="post"> {% csrf_token %}
+
+        <p>Cuenta: <input type="text" name="cuenta" placeholder="Ingrese su cuenta"></p>
+        <p>Sector: <input type="text" name="sector" placeholder="Ingrese su sector"></p>
+        <p>Nombre: <input type="text" name="nombre" placeholder="Ingrese su nombre"></p>
+        <p>Apellido: <input type="text" name="apellido" placeholder="Ingrese su apellido"></p>
+        <p>DNI: <input type="number" name="dni" placeholder="Ingrese su DNI"></p>
+        <p>Email: <input type="text" name="email" placeholder="Ingrese su email"></p>
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+{% endblock bloqueQueCambia %}
