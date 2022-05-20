@@ -14,9 +14,10 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .forms import ExpedientesFormulario, PersonalFormulario, SectorFormulario, UserEditForm
 
-from .models import Expediente, Personal, Sector
+from .models import Avatar, Expediente, Personal, Sector
 
 def inicio(request):
+
     return render(request, 'AppExptes/inicio.html')
 
 @login_required

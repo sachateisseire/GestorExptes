@@ -1,5 +1,7 @@
 from django.db import models
 
+from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Personal(models.Model):
@@ -28,4 +30,9 @@ class Sector(models.Model):
     sectorCoordinador = models.CharField('sector_coordinador', max_length=30)
 
     def __str__(self) -> str:
-        return f'{self.nombre} - {self.sectorCoordinador}'  
+        return f'{self.nombre} - {self.sectorCoordinador}'
+
+class Avatar(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
