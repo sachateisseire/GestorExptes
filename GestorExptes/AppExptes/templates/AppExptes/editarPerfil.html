@@ -1,0 +1,18 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <form action="" method="POST"> {% csrf_token %}
+
+        {{miFormulario.as_p}}
+
+        <button type="submit">Editar</button>
+
+    </form>
+
+
+
+{% endblock bloqueQueCambia %}

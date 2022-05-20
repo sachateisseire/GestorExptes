@@ -12,7 +12,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
-from .forms import ExpedientesFormulario, PersonalFormulario, SectorFormulario
+from .forms import ExpedientesFormulario, PersonalFormulario, SectorFormulario, UserEditForm
 
 from .models import Expediente, Personal, Sector
 
@@ -248,3 +248,31 @@ def register(request):
         form = UserCreationForm()
 
     return render(request, "AppExptes/registro.html", {'form': form})
+
+@login_required
+def editar_perfil(request):
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST)
+
+        if miFormulario.is_valid():
+
+            data = miFormulario.cleaned_data
+
+            usuario.email = data['email']
+            usuario.first_name = data['first_name']
+            usuario.last_name = data['last_name']
+            usuario.password1 = data['password1']            
+            usuario.password2 = data['password2']
+            usuario.save()
+
+            return render(request, 'AppExptes/inicio.html')
+
+    else:
+
+        miFormulario = UserEditForm(initial={'email': usuario.email})
+
+    return render(request, 'AppExptes/editarPerfil.html', {'miFormulario': miFormulario})
