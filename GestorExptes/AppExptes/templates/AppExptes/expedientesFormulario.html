@@ -5,7 +5,7 @@
 
 {% block bloqueQueCambia %}
     
-    <p>Template del formulario de personal</p>
+    <p>Template del formulario de expedientes</p>
 
     
     {% if miForm.errors %}
@@ -16,7 +16,7 @@
         
 
 
-    <form action="/AppExptes/personalFormulario/" method="POST"> {% csrf_token %}
+    <form action="/AppExptes/expedientesFormulario/" method="POST"> {% csrf_token %}
 
         {{miForm.as_p}}
 

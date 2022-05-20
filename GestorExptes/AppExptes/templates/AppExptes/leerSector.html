@@ -1,0 +1,24 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <p>Template de leer del sector</p>
+
+    <ul>
+
+        
+        {% for nombre in lista_sectores %}
+
+        <li>
+            {{nombre}}
+        </li>
+            
+        {% endfor %}
+            
+
+    </ul>
+
+{% endblock bloqueQueCambia %}

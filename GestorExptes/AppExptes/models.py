@@ -28,4 +28,4 @@ class Sector(models.Model):
     sectorCoordinador = models.CharField('sector_coordinador', max_length=30)
 
     def __str__(self) -> str:
-        return f'{self.nombre}'  
+        return f'{self.nombre} - {self.sectorCoordinador}'  
