@@ -126,3 +126,15 @@ def leerSector(request):
 
     return render(request, 'AppExptes/leerSector.html', contexto)
 
+def eliminarSector(request, id):
+
+    sector = Sector.objects.get(id=id)
+
+    sector.delete()
+
+    sectores = Sector.objects.all()
+
+    contexto = {"lista_sectores": sectores}
+
+    return render(request, 'AppExptes/leerSector.html', contexto)
+

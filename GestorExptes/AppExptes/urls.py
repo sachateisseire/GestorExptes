@@ -1,5 +1,5 @@
 from django.urls import path
-from AppExptes.views import expedientes, inicio, personal, sector, personalFormulario, sectorFormulario, expedientesFormulario, busquedaSector, buscar, leerSector
+from AppExptes.views import expedientes, inicio, personal, sector, personalFormulario, sectorFormulario, expedientesFormulario, busquedaSector, buscar, leerSector, eliminarSector
 
 urlpatterns = [
     path('', inicio, name='Inicio'),
@@ -11,5 +11,6 @@ urlpatterns = [
     path('expedientesFormulario/', expedientesFormulario, name='ExpedientesFormulario'),
     path('busquedaSector/', busquedaSector, name='BusquedaSector'),
     path('busqueda/', buscar, name='Buscar'),
-    path('leerSector/', leerSector, name="LeerSector")
+    path('leerSector/', leerSector, name="LeerSector"),
+    path('eliminarSector/<id>', eliminarSector, name='EliminarSector'),
 ]

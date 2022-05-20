@@ -5,20 +5,25 @@
 
 {% block bloqueQueCambia %}
     
-    <p>Template de leer del sector</p>
+    <h2>Template de leer del sector</h2>
 
     <ul>
 
         
-        {% for nombre in lista_sectores %}
+        {% for sector in lista_sectores %}
 
-        <li>
-            {{nombre}}
+        <li style="font-size: x-large;">
+            {{sector.nombre}} - {{sector.sectorCoordinador}}
         </li>
+        <button class="btn btn-danger">
+            <a style="text-decoration: none; color: white;" href ="{% url 'EliminarSector' sector.id %} ">Eliminar</a>
+        </button>
             
         {% endfor %}
             
 
     </ul>
+
+    <a href=" {% url 'SectorFormulario' %} " class="btn btn-success">Agregar nuevo sector</a>
 
 {% endblock bloqueQueCambia %}
