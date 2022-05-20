@@ -15,9 +15,10 @@
         <link href=" {% static 'AppExptes/css/styles.css' %} " rel="stylesheet" />
     </head>
     <body>
-        <div class="d-flex" id="wrapper" style="border: 10px solid #6f0052;">
+        <div class="d-flex" id="wrapper" style="border: 10px solid #6d64bb;">
             <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="border-end" id="sidebar-wrapper" style="background: rgb(0,0,0);
+            background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(237,237,237,1) 100%);">
                 <div class="sidebar-heading border-bottom bg-dark" style="color: white;">Menu</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'Inicio' %} ">Inicio</a>
@@ -34,12 +35,23 @@
                 <!-- Top navigation-->
                 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">
-                        <button class="btn btn-primary" id="sidebarToggle">Botón</button>
+                        
+                        {% if request.user.is_authenticated %}
+                        <button class="btn btn-danger" id="sidebarToggle">{{user.username}}</button>
+                        {% endif %}
+
+                        {% if not request.user.is_authenticated %}
+                        <button class="btn btn-primary" id="sidebarToggle">Visitante</button>
+
+                        {% endif %}
+                            
+
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                                 <li class="nav-item active"><a class="nav-link" href="{% url 'Registrar' %}">Registro</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}">Acceder</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'Logout' %}">Salir</a></li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">INFO</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

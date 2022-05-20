@@ -4,6 +4,8 @@ from django.template import Context, Template
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -17,9 +19,7 @@ from .models import Expediente, Personal, Sector
 def inicio(request):
     return render(request, 'AppExptes/inicio.html')
 
-def personalFormulario(request):
-    return render(request, 'AppExptes/personalFormulario.html')
-
+@login_required
 def personalFormulario(request):
     if request.method == 'POST':
 
@@ -177,19 +177,19 @@ class PersonalDetalle(DetailView):
     model = Personal
     template_name = 'AppExptes/personal_detalle.html'
 
-class PersonalCreacion(CreateView):
+class PersonalCreacion(LoginRequiredMixin, CreateView):
 
     model = Personal
     success_url = '/AppExptes/personal/lista'
     fields = ['cuenta', 'sector', 'nombre', 'apellido', 'dni', 'email']
 
-class PersonalUpdate(UpdateView):
+class PersonalUpdate(LoginRequiredMixin, UpdateView):
 
     model = Personal
     success_url = '/AppExptes/personal/lista'
     fields = ['cuenta', 'sector', 'nombre', 'apellido', 'dni', 'email']
 
-class PersonalDelete(DeleteView):
+class PersonalDelete(LoginRequiredMixin, DeleteView):
 
     model = Personal
     success_url = '/AppExptes/personal/lista'
