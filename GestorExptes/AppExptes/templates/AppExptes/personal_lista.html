@@ -1,0 +1,34 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Template del CRUD lista personal</h2>
+
+    <ul>
+        {% for personal in object_list %}
+            
+        <li>
+            <p>NOMBRE: {{personal.nombre}}</p>
+            <p>
+                <a href="{% url 'Detail' personal.id%}">Ver</a>
+                <a href="{% url 'Edit' personal.id%}">Editar</a>
+                <a href="{% url 'Delete' personal.id%}">Borrar</a>
+
+
+            </p>
+
+
+        </li>
+
+        {% endfor %}
+            
+
+    </ul>
+
+    <a href="{% url 'New' %}">Nuevo</a>
+
+
+{% endblock bloqueQueCambia %}

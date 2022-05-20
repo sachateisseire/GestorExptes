@@ -1,0 +1,23 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Template del CRUD lista personal DETALLE</h2>
+
+    <p>Cuenta del personal: <i>{{personal.cuenta}}</i></p>
+    <p>Sector del personal: <i>{{personal.sector}}</i></p>
+    <p>Nombre del personal: <i>{{personal.nombre}}</i></p>
+    <p>Apellido del personal: <i>{{personal.apellido}}</i></p>
+    <p>DNI del personal: <i>{{personal.dni}}</i></p>
+    <p>Email del personal: <i>{{personal.email}}</i></p>
+
+    <p>
+        <a href="{% url 'Lista' %}">Regresar</a>
+    </p>
+
+
+
+{% endblock bloqueQueCambia %}

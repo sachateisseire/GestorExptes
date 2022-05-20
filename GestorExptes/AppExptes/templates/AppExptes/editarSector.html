@@ -1,0 +1,31 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Template de editar sector: {{sector_nombre}}</h2>
+
+    
+    {% if miFormulario.errors %}
+
+    <p style="color: red;"> Error en los datos</p>
+        
+    {% endif %}
+
+    <form action="" method="POST"> {% csrf_token %}
+
+    <table>
+
+        {{miFormulario.as_table}}
+
+    </table>
+
+    <input type="submit" value="Enviar">
+
+    </form>
+        
+
+{% endblock bloqueQueCambia %}
+    

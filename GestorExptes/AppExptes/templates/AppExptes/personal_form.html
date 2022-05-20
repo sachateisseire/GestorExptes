@@ -1,0 +1,21 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Template del CRUD lista personal FORM aaaaa</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value='Enviar'>
+
+    </form>
+
+    <p>
+        <a href="{% url 'Lista' %}">Regresar</a>
+    </p>
+
+{% endblock bloqueQueCambia %}

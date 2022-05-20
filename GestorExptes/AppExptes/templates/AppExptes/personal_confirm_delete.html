@@ -1,0 +1,16 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Template del CRUD lista personal DETALLE</h2>
+
+    <form method="POST">{% csrf_token %}
+        <P>Deseas borrar el personal "{{ object }}"</P>
+        <input type="submit" value="Submit">
+    </form>
+
+
+{% endblock bloqueQueCambia %}

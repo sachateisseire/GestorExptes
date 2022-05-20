@@ -2,21 +2,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, Template
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+
 from .forms import ExpedientesFormulario, PersonalFormulario, SectorFormulario
 
 from .models import Expediente, Personal, Sector
 
 def inicio(request):
     return render(request, 'AppExptes/inicio.html')
-
-def personal(request):
-    return render(request, 'AppExptes/personal.html')
-
-def expedientes(request):
-    return render(request, 'AppExptes/expedientes.html')
-
-def sector(request):
-    return render(request, 'AppExptes/sector.html')
 
 def personalFormulario(request):
     return render(request, 'AppExptes/personalFormulario.html')
@@ -137,4 +136,96 @@ def eliminarSector(request, id):
     contexto = {"lista_sectores": sectores}
 
     return render(request, 'AppExptes/leerSector.html', contexto)
+
+def editarSector(request, id):
+
+    sector = Sector.objects.get(id=id)
+
+    if request.method == 'POST':
+
+        miFormulario = SectorFormulario(request.POST)
+
+        if miFormulario.is_valid():
+
+            informacion = miFormulario.cleaned_data
+
+            sector.nombre = informacion['nombre']
+            sector.sectorCoordinador = informacion['sectorCoordinador']
+
+            sector.save()
+
+            return render(request, 'AppExptes/inicio.html')
+
+    else:
+
+        miFormulario = SectorFormulario(
+            initial={
+                'nombre': sector.nombre,
+                'sectorCoordinador': sector.sectorCoordinador,
+            }
+        )
+    
+    return render(request, 'AppExptes/editarSector.html', {"miFormulario": miFormulario, "sector_nombre": sector.nombre})
+
+class PersonalLista(ListView):
+
+    model = Personal
+    template_name = 'AppExptes/personal_lista.html'
+
+class PersonalDetalle(DetailView):
+
+    model = Personal
+    template_name = 'AppExptes/personal_detalle.html'
+
+class PersonalCreacion(CreateView):
+
+    model = Personal
+    success_url = '/AppExptes/personal/lista'
+    fields = ['cuenta', 'sector', 'nombre', 'apellido', 'dni', 'email']
+
+class PersonalUpdate(UpdateView):
+
+    model = Personal
+    success_url = '/AppExptes/personal/lista'
+    fields = ['cuenta', 'sector', 'nombre', 'apellido', 'dni', 'email']
+
+class PersonalDelete(DeleteView):
+
+    model = Personal
+    success_url = '/AppExptes/personal/lista'
+
+def loginView(request):
+
+    if request.method == 'POST':
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+
+            datos = form.cleaned_data
+
+            usuario = datos['username']
+            psw = datos['password']
+
+            user = authenticate(username=usuario, password=psw)
+
+            if user:
+
+                login(request, user)
+
+                return render(request, "AppExptes/inicio.html", {"mensaje": f'Bienvenido {usuario}'})
+
+            else:
+
+                return render(request, "AppExptes/inicio.html", {"mensaje": 'Datos incorrectos'})
+
+        else:
+
+            return render(request, "AppExptes/inicio.html", {"mensaje": 'Datos incorrectos'} )
+
+    else:
+
+        form = AuthenticationForm()
+
+    return render(request, "AppExptes/login.html", {'form': form})
 
