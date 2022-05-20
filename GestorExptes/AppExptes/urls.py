@@ -1,5 +1,6 @@
 from django.urls import path
-from AppExptes.views import PersonalLista, PersonalCreacion, PersonalDelete, PersonalDetalle, PersonalUpdate, inicio, personalFormulario, sectorFormulario, expedientesFormulario, busquedaSector, buscar, leerSector, eliminarSector, editarSector, loginView
+from django.contrib.auth.views import LogoutView
+from AppExptes.views import PersonalLista, PersonalCreacion, PersonalDelete, PersonalDetalle, PersonalUpdate, inicio, personalFormulario, sectorFormulario, expedientesFormulario, busquedaSector, buscar, leerSector, eliminarSector, editarSector, loginView, register
 
 urlpatterns = [
     path('', inicio, name='Inicio'),
@@ -16,5 +17,7 @@ urlpatterns = [
     path('personal/edit/<pk>', PersonalUpdate.as_view(), name='Edit' ),
     path('personal/delete/<pk>', PersonalDelete.as_view(), name='Delete' ),
     path('personal/create/', PersonalCreacion.as_view(), name='New' ),
-    path('login/', loginView, name='Login'),           
+    path('login/', loginView, name='Login'),
+    path('registrar/', register, name='Registrar'),
+    path('logout/', LogoutView.as_view(template_name='AppExptes/logout.html'), name='Logout'),              
 ]

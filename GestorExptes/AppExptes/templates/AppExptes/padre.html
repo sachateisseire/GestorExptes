@@ -21,9 +21,9 @@
                 <div class="sidebar-heading border-bottom bg-dark" style="color: white;">Menu</div>
                 <div class="list-group list-group-flush">
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'Inicio' %} ">Inicio</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightskyblue;"href=" {% url 'PersonalFormulario' %} ">Ingresar Personal</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightskyblue;"href=" {% url 'SectorFormulario' %} ">Ingresar Sector</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightskyblue;"href=" {% url 'ExpedientesFormulario' %} ">Ingresar Expedientes</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'PersonalFormulario' %} ">Ingresar Personal</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'SectorFormulario' %} ">Ingresar Sector</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'ExpedientesFormulario' %} ">Ingresar Expedientes</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'BusquedaSector' %} ">Busqueda del Sector</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'LeerSector' %} ">Lector del Sector</a>
                     <a class="list-group-item list-group-item-action list-group-item-light p-3" style="background-color: lightgray;"href=" {% url 'Lista' %} ">Personal Lista</a>
@@ -38,8 +38,8 @@
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
-                                <li class="nav-item active"><a class="nav-link" href="#!">Registro</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#!">Acceder</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="{% url 'Registrar' %}">Registro</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}">Acceder</a></li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">INFO</a>
                                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

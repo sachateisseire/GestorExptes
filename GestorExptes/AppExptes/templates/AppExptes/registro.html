@@ -1,0 +1,17 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <form action='' method="POST">{% csrf_token %}
+
+        {{form.as_p}}
+
+        <button type="submit">Registro</button>
+
+
+    </form>
+
+{% endblock bloqueQueCambia %}

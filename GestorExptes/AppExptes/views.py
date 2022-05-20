@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Context, Template
 
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 from django.views.generic import ListView
@@ -229,3 +229,22 @@ def loginView(request):
 
     return render(request, "AppExptes/login.html", {'form': form})
 
+def register(request):
+
+    if request.method == 'POST':
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data['username']
+
+            form.save()
+
+            return render(request, "AppExptes/inicio.html", {'mensaje': f'Usuario {username} creado'})
+
+    else:
+
+        form = UserCreationForm()
+
+    return render(request, "AppExptes/registro.html", {'form': form})
