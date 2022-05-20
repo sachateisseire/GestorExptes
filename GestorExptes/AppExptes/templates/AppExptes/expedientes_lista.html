@@ -1,0 +1,65 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+
+<div style="background-color: white; display: inline; text-align: center;">
+<h3 >Gestor de Expedientes</h3>
+<br>
+</div>
+    <ul>
+
+          
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Numero</th>
+                <th>Tipo</th>
+                <th>Fecha de Entrada</th>
+                <th>Estado</th>
+                <th>Cuenta</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                {% for expediente in object_list %}
+                <td>{{expediente.numero}}</td>
+                <td>{{expediente.tipo}}</td>
+                <td>{{expediente.fechaDeEntrada}}</td>
+                
+                
+                {% if expediente.estado == 'Pendiente' %}
+                <td style="color: red;">{{expediente.estado}}</td>
+                {% elif expediente.estado == 'Finalizado' %}
+                <td style="color: green;">{{expediente.estado}}</td>
+                {% endif %}
+                  
+                <td>{{expediente.cuenta}}</td>
+                <td>
+                    <button class="btn-xs btn-success">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'EDetail' expediente.id%}">Examinar</a>
+                    </button>
+                    <button class="btn-xs btn-warning">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'EEdit' expediente.id%}">Editar</a>
+                    </button>
+                    <button class="btn-xs btn-danger">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'EDelete' expediente.id%}">Eliminar</a>
+                    </button>
+                    
+                </td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+    </ul>
+
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'ExpedientesFormulario' %}">Agregar nuevo expediente</a>
+    </button>
+
+    {% endblock bloqueQueCambia %}

@@ -1,0 +1,51 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+
+<div style="background-color: white; display: inline; text-align: center;">
+<h3 >Gestor de Sector</h3>
+</div>
+    <ul>
+
+          
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Coordinación</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                {% for sector in object_list %}
+                <td>{{sector.nombre}}</td>
+                <td>{{sector.sectorCoordinador}}</td>
+                <td>
+                    <button class="btn-xs btn-success">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'SDetail' sector.id%}">Examinar</a>
+                    </button>
+                    <button class="btn-xs btn-warning">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'SEdit' sector.id%}">Editar</a>
+                    </button>
+                    <button class="btn-xs btn-danger">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'SDelete' sector.id%}">Eliminar</a>
+                    </button>
+                    
+                </td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+    </ul>
+
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'SectorFormulario' %}">Agregar nuevo sector</a>
+    </button>
+
+    {% endblock bloqueQueCambia %}

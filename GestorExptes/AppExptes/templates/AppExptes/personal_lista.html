@@ -4,31 +4,59 @@
 
 
 {% block bloqueQueCambia %}
-    
-    <h2>Template del CRUD lista personal</h2>
 
+<div style="background-color: white; display: inline; text-align: center;">
+<h3 >Gestor de Personal</h3>
+</div>
     <ul>
-        {% for personal in object_list %}
-            
-        <li>
-            <p>NOMBRE: {{personal.nombre}}</p>
-            <p>
-                <a href="{% url 'Detail' personal.id%}">Ver</a>
-                <a href="{% url 'Edit' personal.id%}">Editar</a>
-                <a href="{% url 'Delete' personal.id%}">Borrar</a>
 
+          
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Cuenta</th>
+                <th>DNI</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Opciones</th>
+              </tr>
+            </thead>
 
-            </p>
-
-
-        </li>
-
-        {% endfor %}
-            
+            <tbody>
+              <tr>
+                {% for personal in object_list %}
+                <td>{{personal.cuenta}}</td>
+                <td>{{personal.dni}}</td>
+                <td>{{personal.nombre}}</td>
+                <td>{{personal.apellido}}</td>
+                <td>
+                    <button class="btn-xs btn-success">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'Detail' personal.id%}">Examinar</a>
+                    </button>
+                    <button class="btn-xs btn-warning">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'Edit' personal.id%}">Editar</a>
+                    </button>
+                    <button class="btn-xs btn-danger">
+                        <a style="text-decoration: none; color: white;" href ="{% url 'Delete' personal.id%}">Eliminar</a>
+                    </button>
+                    
+                </td>
+                
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
 
     </ul>
+            
 
-    <a href="{% url 'New' %}">Nuevo</a>
+
+
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'New' %}">Agregar nuevo personal</a>
+    </button>
+
+
 
 
 {% endblock bloqueQueCambia %}

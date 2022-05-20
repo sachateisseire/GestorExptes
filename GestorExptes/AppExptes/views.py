@@ -71,7 +71,7 @@ def sectorFormulario(request):
 
         mi_formulario = SectorFormulario()
 
-    return render(request, 'AppExptes/sectorFormulario.html', {'miForm': mi_formulario})
+    return render(request, 'AppExptes/sector_form.html', {'miForm': mi_formulario})
 
 
 def expedientesFormulario(request):
@@ -195,6 +195,69 @@ class PersonalDelete(LoginRequiredMixin, DeleteView):
     model = Personal
     success_url = '/AppExptes/personal/lista'
 
+
+
+
+class SectorLista(ListView):
+
+    model = Sector
+    template_name = 'AppExptes/sector_lista.html'
+
+class SectorDetalle(DetailView):
+
+    model = Sector
+    template_name = 'AppExptes/sector_detalle.html'
+
+class SectorCreacion(LoginRequiredMixin, CreateView):
+
+    model = Sector
+    success_url = '/AppExptes/sector/lista'
+    fields = ['nombre', 'sectorCoordinador']
+
+class SectorUpdate(LoginRequiredMixin, UpdateView):
+
+    model = Sector
+    success_url = '/AppExptes/sector/lista'
+    fields = ['nombre', 'sectorCoordinador']
+
+class SectorDelete(LoginRequiredMixin, DeleteView):
+
+    model = Sector
+    success_url = '/AppExptes/sector/lista'
+
+
+
+class ExpedientesLista(ListView):
+
+    model = Expediente
+    template_name = 'AppExptes/expedientes_lista.html'
+
+class ExpedientesDetalle(DetailView):
+
+    model = Expediente
+    template_name = 'AppExptes/expedientes_detalle.html'
+
+class ExpedientesCreacion(LoginRequiredMixin, CreateView):
+
+    model = Expediente
+    success_url = '/AppExptes/expedientes/lista'
+    fields = ['numero', 'tipo', 'fechaDeEntrada', 'estado', 'cuenta']
+
+class ExpedientesUpdate(LoginRequiredMixin, UpdateView):
+
+    model = Expediente
+    success_url = '/AppExptes/expedientes/lista'
+    fields = ['numero', 'tipo', 'fechaDeEntrada', 'estado', 'cuenta']
+
+class ExpedientesDelete(LoginRequiredMixin, DeleteView):
+
+    model = Expediente
+    success_url = '/AppExptes/expedientes/lista'
+
+
+
+
+
 def loginView(request):
 
     if request.method == 'POST':
@@ -277,3 +340,22 @@ def editar_perfil(request):
         miFormulario = UserEditForm(initial={'email': usuario.email})
 
     return render(request, 'AppExptes/editarPerfil.html', {'miFormulario': miFormulario})
+
+
+def about2(request):
+
+    return render(request, 'AppExptes/about2.html')
+
+def about1(request):
+
+    return render(request, 'AppExptes/about1.html')
+
+def faqs(request):
+
+    return render(request, 'AppExptes/faqs.html')
+
+def avatar2(request):
+
+    avatar = Avatar.objects.get(user=request.user.id)
+
+    return render(request, 'AppExptes/avatares.html', {'avatar': avatar})

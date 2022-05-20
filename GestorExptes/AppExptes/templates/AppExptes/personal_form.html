@@ -5,7 +5,8 @@
 
 {% block bloqueQueCambia %}
     
-    <h2>Template del CRUD lista personal FORM aaaaa</h2>
+    <h2>Creador / Editor de Personal</h2>
+    <br>
 
     <form method="POST">
         {% csrf_token %}
@@ -14,8 +15,9 @@
 
     </form>
 
-    <p>
-        <a href="{% url 'Lista' %}">Regresar</a>
-    </p>
+<br>
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'Lista' %}">Regresar</a>
+    </button>
 
 {% endblock bloqueQueCambia %}

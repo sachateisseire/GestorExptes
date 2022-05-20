@@ -1,0 +1,22 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Detalle de Expediente</h2>
+    <br>
+
+    <p>Numero del Expediente: <i>{{expediente.numero}}</i></p>
+    <p>Tipo del Expediente: <i>{{expediente.tipo}}</i></p>
+    <p>Fecha de Entrada: <i>{{expediente.fechaDeEntrada}}</i></p>
+    <p>Estado: <i>{{expediente.estado}}</i></p>
+    <p>Cuenta: <i>{{expediente.cuenta}}</i></p>
+
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'ELista' %}">Regresar</a>
+    </button>
+
+
+{% endblock bloqueQueCambia %}

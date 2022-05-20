@@ -5,15 +5,15 @@
 
 {% block bloqueQueCambia %}
     
-    <h2>Borrar Personal</h2>
+    <h2>Borrar Expediente</h2>
 
     <form method="POST">{% csrf_token %}
-        <P>¿Desea borrar el personal "{{ object }}"?</P>
+        <P>¿Desea borrar el expediente "{{ object }}"?</P>
         <input type="submit" value="Borrar">
     </form>
 <br>
     <button class="btn btn-primary">
-        <a style="text-decoration: none; color: white;" href ="{% url 'Lista' %}">Regresar</a>
+        <a style="text-decoration: none; color: white;" href ="{% url 'ELista' %}">Regresar</a>
     </button>
 
 {% endblock bloqueQueCambia %}

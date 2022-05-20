@@ -1,0 +1,19 @@
+{% extends 'AppExptes/padre.html' %}
+
+{% load static %}
+
+
+{% block bloqueQueCambia %}
+    
+    <h2>Detalle de Sector</h2>
+    <br>
+
+    <p>Nombre del Sector: <i>{{sector.nombre}}</i></p>
+    <p>Departamento Coordinador: <i>{{sector.sectorCoordinador}}</i></p>
+
+    <button class="btn btn-primary">
+        <a style="text-decoration: none; color: white;" href ="{% url 'SLista' %}">Regresar</a>
+    </button>
+
+
+{% endblock bloqueQueCambia %}
